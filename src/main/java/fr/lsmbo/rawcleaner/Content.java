@@ -128,6 +128,14 @@ public class Content {
     public Boolean isCorrupted() { return (isCorrupted != null && isCorrupted); }
     public Boolean getIsValid() { return isRoot || isCorrupted == null ? null : !isCorrupted; }
     public Boolean getIsArchivedButNoArchiveFound() { return isArchivedButNoArchiveFound; }
+    public Boolean isCheckable() {
+        if(isRoot || !chkIsRawData.isSelected()) return false;
+        else {
+            // raw files should always be checked, except for recent files
+            LocalDateTime localDateTime = LocalDateTime.ofInstant(creationDate.toInstant(), ZoneId.systemDefault());
+            return ChronoUnit.HOURS.between(localDateTime, LocalDateTime.now()) > 6;
+        }
+    }
     public boolean shouldBeArchivedButIsNot() {
         if(isRoot) return false;
         // no archives found
@@ -166,6 +174,7 @@ public class Content {
 //            if (isArchived && !getIsIdenticalToArchive()) information += "File and archive are not exactly identical: archive has " + archiveFileCount + " files and a total size of " + formatSize(archiveSize) + "\n";
             if (isArchived && !getIsIdenticalToArchive()) information += "File and archive are not exactly identical: " + formatRawArchiveDiff() + "\n";
             if (isLocked) information += "File is tagged as read-only and can't be deleted\n";
+            if(chkIsRawData.isSelected() && !isCheckable()) information += "Raw file is not checked because it is too recent\n";
             if (isCorrupted != null && isCorrupted) information += "File appears to be corrupted, the archive will be corrupted too\n";
             if (archives.size() > 1) information += "File is archived in multiple directories: \n\t" + archives.keySet().stream().map(File::getAbsolutePath).collect(Collectors.joining("\n\t")) + "\n";
         }

@@ -219,7 +219,8 @@ public class Window {
 //            } catch (Throwable ignored) {}
 //            try {
             HashMap<String, String> metadataPerLocalFile = MsAccess.checkFiles(localFiles.values().stream()
-                    .filter(data -> data.getValue().getIsRawData().isSelected())
+//                    .filter(data -> data.getValue().getIsRawData().isSelected())
+                    .filter(data -> data.getValue().isCheckable())
                     .map(data -> data.getValue().getFile().getAbsolutePath())
                     .collect(Collectors.toList()));
 //                MsAccessCaller mac = new MsAccessCaller(localFiles.values().stream()
@@ -342,7 +343,6 @@ public class Window {
         localFiles.values().stream().filter(node -> node.getValue().isDeletable()).forEach(node -> table.getSelectionModel().select(node));
     }
 
-    // TODO set as Future
     @FXML
     private void deleteSelectedData() {
         // add a warning popup
@@ -386,9 +386,6 @@ public class Window {
     public void setStage(Stage primaryStage) {
         stage = primaryStage;
         stage.setMaximized(true);
-//        dialogStage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN), this::btnSaveListener);
-//        dialogStage.getScene().getAccelerators().put(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN), this::copySelectionToClipboard);
-//        dialogStage.setOnCloseRequest(e -> beforeClosing());
     }
 
     @FXML

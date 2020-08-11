@@ -34,7 +34,6 @@ public class Global {
         REPORTS_DIRECTORY = new File(settings.getDefaultReportDirectory());
         TEMP_DIRECTORY = new File(settings.getDefaultTempDirectory());
         RAW_DATA_EXTENSION = Arrays.stream(settings.getRawDataExtension().split(" ")).collect(Collectors.toList());
-//        MACHINE_ID = settings.getMachineIdentifier();
         MACHINE_IDS = Arrays.stream(settings.getMachineIdentifiers().split(" ")).collect(Collectors.toList());
         AGE_LIMIT_IN_MONTH = settings.getMinimalNumberOfMonthsBeforeDeletion();
         MIN_UNARCHIVED_FILES = settings.getMinimalUnarchivedFilesBeforeWarning();
@@ -57,7 +56,6 @@ public class Global {
     public static File REPORTS_DIRECTORY;
     public static File TEMP_DIRECTORY;
     public static List<String> RAW_DATA_EXTENSION;
-//    public static String MACHINE_ID;
     public static List<String> MACHINE_IDS;
     public static int AGE_LIMIT_IN_MONTH;
     public static int MIN_UNARCHIVED_FILES;
@@ -73,7 +71,6 @@ public class Global {
             if(file.getName().endsWith(RAW_DATA_EXTENSION.get(i++))) endsWithRawDataExtension = true;
         }
         return startsWithMachineId && endsWithRawDataExtension;
-//        return file.getName().startsWith(MACHINE_ID) && RAW_DATA_EXTENSION.stream().anyMatch(ext -> ext.equals(file.getName().substring(file.getName().lastIndexOf(".")).toLowerCase()));
     }
 
     public final static Image ICON_ROOT = new Image(Objects.requireNonNull(ClassLoader.getSystemResourceAsStream("computer.png")));
