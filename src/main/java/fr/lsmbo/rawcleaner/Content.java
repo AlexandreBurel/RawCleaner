@@ -55,7 +55,7 @@ public class Content {
             LocalDateTime localDateTime = LocalDateTime.ofInstant(creationDate.toInstant(), ZoneId.systemDefault());
             long nbMonths = ChronoUnit.MONTHS.between(localDateTime, LocalDateTime.now());
             if(nbMonths > Global.AGE_LIMIT_IN_MONTH) isOlderThanNMonths = true;
-            if(!isRoot && !attributes.isArchive()) { // isArchive == true means that the file is ready to be archived, and therefore not archive yet
+            if(!isRoot && (!file.isDirectory() || isRawData) && !attributes.isArchive()) { // isArchive == true means that the file is ready to be archived, and therefore not archive yet
                 // find archive
                 naiveSearchForArchive(file);
                 if(archives.size() == 0) isArchivedButNoArchiveFound = true;

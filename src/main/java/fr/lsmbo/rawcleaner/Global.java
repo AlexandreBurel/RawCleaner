@@ -7,8 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +27,7 @@ public class Global {
     public static Settings settings = new Settings();
     public static void loadSettings() throws Throwable {
         Gson gson = new Gson();
-        JsonReader reader = new JsonReader(new FileReader(settingsFile));
+        JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(settingsFile), StandardCharsets.UTF_8));
         settings = gson.fromJson(reader, Settings.class);
 
         RAW_DATA_DIRECTORY = new File(settings.getRawDataDirectory());

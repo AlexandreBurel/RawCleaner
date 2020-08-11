@@ -279,7 +279,8 @@ public class Window {
             // update icons
             Content content = child.getValue();
             if(content.getIsRawData().isSelected()) {
-                if(content.isCorrupted()) child.setGraphic(new ImageView(Global.ICON_RAW_CORRUPTED));
+                if(!content.isCheckable()) child.setGraphic(new ImageView(Global.ICON_RAW_WARNING));
+                else if(content.isCorrupted()) child.setGraphic(new ImageView(Global.ICON_RAW_CORRUPTED));
                 else if(content.isDeletable()) {
                     if(content.getIsIdenticalToArchive()) child.setGraphic(new ImageView(Global.ICON_RAW_GOOD));
                     else child.setGraphic(new ImageView(Global.ICON_RAW_WARNING));
