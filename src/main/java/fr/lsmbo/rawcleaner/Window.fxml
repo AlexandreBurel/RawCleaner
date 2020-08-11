@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="stackPane" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.lsmbo.rawcleaner.Window">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="600.0">
+         <top>
+            <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                        <MenuItem fx:id="mnuRefresh" mnemonicParsing="false" onAction="#initialize" text="Refresh">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="F5" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnuRefresh1" mnemonicParsing="false" onAction="#changeTableConstraints" text="Columns autofit">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="C" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnuExport" mnemonicParsing="false" onAction="#exportData" text="Export">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnuExportMissingFiles" mnemonicParsing="false" onAction="#exportMissingData" text="Export missing data">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                    <MenuItem fx:id="mnuClose" mnemonicParsing="false" onAction="#exitListener" text="Close">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="W" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem fx:id="mnuCheck" mnemonicParsing="false" onAction="#checkMetadata" text="Check raw files status">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="ENTER" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnuSelectArchivedData" mnemonicParsing="false" onAction="#selectDeletableData" text="Select deletable files">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="D" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                        <MenuItem fx:id="mnuDeleteSelection" mnemonicParsing="false" onAction="#deleteSelectedData" text="Delete selected files">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="DELETE" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                           </accelerator>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help" visible="false">
+                  <items>
+                    <MenuItem fx:id="mnuAbout" mnemonicParsing="false" onAction="#test" text="About">
+                           <accelerator>
+                              <KeyCodeCombination alt="UP" code="T" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                           </accelerator></MenuItem>
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <center>
+            <TreeTableView fx:id="table" BorderPane.alignment="CENTER">
+              <columns>
+                <TreeTableColumn fx:id="tbcPath" prefWidth="200.0" text="Path" />
+                <TreeTableColumn fx:id="tbcIsRawData" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Is Raw data" />
+                  <TreeTableColumn fx:id="tbcCreationDate" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Creation date" />
+                  <TreeTableColumn fx:id="tbcLastModified" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Last modified" />
+                  <TreeTableColumn fx:id="tbcSize" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Size" />
+                  <TreeTableColumn fx:id="tbcFileCount" prefWidth="75.0" style="-fx-alignment: CENTER;" text="File count" />
+                  <TreeTableColumn fx:id="tbcArchive" prefWidth="350.0" text="Archive path" />
+                  <TreeTableColumn fx:id="tbcIsUnlocked" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Is unlocked" />
+                  <TreeTableColumn fx:id="tbcIsValid" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Is valid" />
+                  <TreeTableColumn fx:id="tbcCheckForDeletion" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Check for deletion" />
+                  <TreeTableColumn fx:id="tbcInformation" minWidth="-Infinity" prefWidth="350.0" text="Information" />
+              </columns>
+            </TreeTableView>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,5 @@
+To create a final package, do the following steps: 
+* copy the pwiz folder inside target\RawCleaner-1.0-SNAPSHOT
+* adjust the path in target\RawCleaner-1.0-SNAPSHOT\config\settings.json
+* copy a jre inside target\RawCleaner-1.0-SNAPSHOT
+* adjust the command in target\RawCleaner-1.0-SNAPSHOT\raw-cleaner.bat

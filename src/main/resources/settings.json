@@ -1,0 +1,14 @@
+{
+  "rawDataDirectory": "D:\\temp\\Archives\\Files",
+  "archiveDirectory": "D:\\temp\\Archives\\Archives",
+  "machineIdentifiers": "Q",
+  "defaultReportDirectory": "Reports",
+
+
+  "rawDataExtension": ".raw .d .wiff",
+  "minimalNumberOfMonthsBeforeDeletion": 3,
+  "minimalUnarchivedFilesBeforeWarning": 5,
+
+  "msaccessPath": "../../pwiz-bin-windows-x86_64-vc141-release-3_0_20190_1808fef6e/msaccess.exe",
+  "defaultTempDirectory": "tmp"
+}
