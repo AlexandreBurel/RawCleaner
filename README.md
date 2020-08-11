@@ -1,10 +1,10 @@
-*** GENERAL INFORMATION ***
+### GENERAL INFORMATION
 
 This software has been developed by Alexandre Burel for internal use inside LSMBO only.
 To start the application, double-click on the file raw-cleaner.bat
 
 
-*** SETTINGS ***
+### SETTINGS
 
 Open settings file in config/settings.json
 Important: for all paths, make sure to use either "/" or "\\" as separators
@@ -24,7 +24,8 @@ The next values can be modified by the administrator only
 * defaultTempDirectory : the directory used to store temporary files. These files should be deleted automatically when closing the software
 
 
-*** RAW DATA IDENTIFICATION ***
+### RAW DATA IDENTIFICATION
+
 The settings machineIdentifiers and rawDataExtension are used to recognize raw data in the list of files. If a file or directory starts with one of the machine identifiers
 and ends with one of the raw data extensions, it will be considered as a raw file and will be checked for corruption.
 Make sure to provide information that will only identify true raw data, otherwise you may have a lot of corrupted files, just because ms-access will not be able to read them.
